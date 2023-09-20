@@ -4,12 +4,12 @@ import 'package:provider/provider.dart';
 
 import '../providers/app_config_provider.dart';
 
-class LanguageBottomShett extends StatefulWidget {
+class ThemeBottomSheet extends StatefulWidget {
   @override
-  State<LanguageBottomShett> createState() => _LanguageBottomShettState();
+  State<ThemeBottomSheet> createState() => _ThemeBottomSheetState();
 }
 
-class _LanguageBottomShettState extends State<LanguageBottomShett> {
+class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
@@ -18,19 +18,18 @@ class _LanguageBottomShettState extends State<LanguageBottomShett> {
       children: [
         InkWell(
             onTap: () {
-              provider.changeLanguage('en');
+              provider.changeTheme(ThemeMode.dark);
             },
-            child: provider.appLanguage == 'en'
-                ? getSelectedItemWidget(AppLocalizations.of(context)!.english)
-                : getUnSelectedItemWidget(
-                    AppLocalizations.of(context)!.english)),
+            child: provider.appTheme == ThemeMode.dark
+                ? getSelectedItemWidget(AppLocalizations.of(context)!.dark)
+                : getUnSelectedItemWidget(AppLocalizations.of(context)!.dark)),
         InkWell(
           onTap: () {
-            provider.changeLanguage('ar');
+            provider.changeTheme(ThemeMode.light);
           },
-          child: provider.appLanguage == 'ar'
-              ? getSelectedItemWidget(AppLocalizations.of(context)!.arabic)
-              : getUnSelectedItemWidget(AppLocalizations.of(context)!.arabic),
+          child: provider.appTheme == ThemeMode.light
+              ? getSelectedItemWidget(AppLocalizations.of(context)!.light)
+              : getUnSelectedItemWidget(AppLocalizations.of(context)!.light),
         ),
       ],
     );
